@@ -6,13 +6,15 @@ function TipForm() {
  const [tip, setTip] = useState(0)
  const [split, setSplit] = useState(0)
 
- let tip_amount = parseFloat(bill) * parseFloat(tip)
+ let tip_conversion = tip / 100
+ let tip_amount = parseFloat(bill) * parseFloat(tip_conversion)
  let bill_total = parseFloat(tip_amount) + parseFloat(bill)
  let per_person = parseFloat(bill_total) / parseFloat(split)
 
   return (
     <div className='wrapper'>
         <form>
+            <div className='tipPrompt'>Bill total:</div>
             <input
                 placeholder='Bill total' 
                 type="number"
@@ -20,6 +22,7 @@ function TipForm() {
                 onChange={(e) => setBill(e.target.value)}
             />
 
+            <div className='tipPrompt'>Tip %:</div>
             <input 
                 placeholder='Tip %' 
                 type="number"
@@ -27,6 +30,7 @@ function TipForm() {
                 onChange={(e) => setTip(e.target.value)}
             />
 
+            <div className='tipPrompt'># People:</div>
             <input
                 placeholder='How many people?' 
                 type="number"

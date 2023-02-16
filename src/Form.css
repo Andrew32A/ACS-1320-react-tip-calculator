@@ -6,8 +6,9 @@ form {
 }
 
 input {
-    padding: 20px;
+    padding: 10px;
     margin: 20px;
+    margin-top: 5px;
 }
 
 .results {
@@ -22,6 +23,10 @@ input {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.tipPrompt {
+    font-size: 20px;
 }
 
 
