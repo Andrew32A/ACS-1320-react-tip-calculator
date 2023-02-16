@@ -1,70 +1,203 @@
-# Getting Started with Create React App
+<!-- .slide: data-background="./Images/header.svg" data-background-repeat="none" data-background-size="40% 40%" data-background-position="center 10%" class="header" -->
+# ACS 1320 - Lesson 11 - Forms and User inputs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Put a link to the slides so that students can find them -->
 
-## Available Scripts
+<!-- ➡️ [**Slides**](/Syllabus-Template/Slides/Lesson1.html ':ignore') -->
 
-In the project directory, you can run:
+<!-- > -->
 
-### `npm start`
+## Why you should know this
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Collecting user data is crucial to many apps you will create. React is a library for creating user interfaces and creating interfaces for forms is an art in itself. React handles forms a little differently from how you have handled forms in other systems. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- > -->
 
-### `npm test`
+## Learning Objectives
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Use State to manage form input
+1. Implement the controlled component patern
+1. Create forms using components
 
-### `npm run build`
+<!-- > -->
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Review Your Work
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pair up and review projects show your work. Walk through all of the features you have implemented.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Make a list of Everything you need to complete to show your work in class on Tue, March 3.
 
-### `npm run eject`
+Identify the three most important things on your list that need to get done.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Identify one or more items on the list that you can accomplish in class today during lab time.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- > -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# React and Forms
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When using forms and inputs React has a special pattern. It's called the controlled component pattern. 
 
-## Learn More
+<!-- > -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The controlled component pattern uses state to hold the value of an input. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You should try it for yourself with these challenges. 
 
-### Code Splitting
+<!-- > -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Using Input with React
 
-### Analyzing the Bundle Size
+<!-- > -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+When using input fields/form elements with React you'll use a special pattern called the controlled component pattern. 
 
-### Making a Progressive Web App
+https://reactjs.org/docs/forms.html
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- > -->
 
-### Advanced Configuration
+The idea is that the value you enter into a form element is stored in state and it's that value that is displayed by the form element. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<!-- > -->
 
-### Deployment
+Imagine you have a for where a user will input their name.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```JS 
+import { useState } from 'react'
 
-### `npm run build` fails to minify
+function NameForm() {
+  const [name, setName] = useState('')
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <input 
+      type="text"
+      value={name}
+      onChange={(e) => setName(e.target.name)}
+    />
+  )
+}
+```
+
+<!-- > -->
+
+Here is the process. 
+
+- You enter a character in the field
+- onChange event fires
+- Call `setName` to change the value of state
+- set the value of the input to state
+
+<!-- > -->
+
+### Forms 
+
+<!-- > -->
+
+The example above is only the input. Often you'll want to wrap your inputs in a form element. 
+
+<!-- > -->
+
+This is a more complete example: 
+
+```JS
+import react, { useState } from 'react'
+
+function FormThing() {
+ const [name, setName] = useState('')
+ const [email, setEmail] = useState('')
+
+  return (
+    <form>
+      <input 
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value )}
+      />
+
+      <input 
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value )}
+      />
+    </form>
+  )
+}
+```
+
+Notice here we have two inputs. Each has a state variable that tracks it's value. 
+
+<!-- > -->
+
+### Challenge 1
+
+<!-- > -->
+
+Use the Controlled Component pattern. The goal of this challenge is to create a component with an input field and an H1. As you enter text in the input the H1 should display the same text
+
+- Make a React Project
+- Make a New Component with an input
+- Use Conotrolled Component pattern to store the input value on state
+- Display the value of state in the H1. 
+
+<!-- > -->
+
+### Challenge 2
+
+<!-- > -->
+
+Make the a tip calculator. Google Tip Calculator and use the Google tip calculator as a model.
+
+<!-- > -->
+
+You'll use the controlled component pattern for the tip calculator inputs. This should store the bill, tip%, and split vlaues on state. In the render method calculate the tip amount from the values in state and display it. 
+
+- You'll need inputs for: 
+  - Bill
+  - Tip %
+  - Split (number of ways to split the bill)
+- Dipslay: 
+  - Tip amount
+  - The bill total 
+  - Per person amount
+- These values should update as you change the values
+
+### Stretch Challenges
+
+If you've got the tip calculator working try these stretch goals. 
+
+- Use CSS to style the tip calculator
+- Format the Bill with a decimal
+- Create an input for the tip amount that calculates the tip percent
+
+<!-- .slide: data-background="#087CB8" -->
+## [**10m**] BREAK
+
+<!-- > -->
+
+# Topic 2
+
+<!-- > -->
+
+## Wrap Up (5 min)
+
+- Continue working on your current tutorial
+- Complete reading
+- Complete challenges
+
+<!-- > -->
+
+## Additional Resources
+
+1. Links to additional readings and videos
+
+<!-- > -->
+
+<!-- ## Minute-by-Minute
+
+| **Elapsed** | **Time** | **Activity** |
+| ----------- | -------- | ------------ |
+| 0:00 | 0:05 | [Why you should know this](#why-you-should-know-this) |
+| 0:05 | 0:15 | [Learning Objectives](#learning-objectives) |
+| 0:20 | 0:30 | In Class Activity I |
+| 0:50 | 0:10 | BREAK |
+| 1:00 | 0:45 | In Class Activity II |
+| 1:45 | 0:05 | Wrap up review objectives | -->
